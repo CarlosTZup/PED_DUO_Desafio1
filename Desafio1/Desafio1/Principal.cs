@@ -30,6 +30,7 @@ namespace Desafio1
                 arbol.TransversaPreO(r);
 
             }
+            DrawString();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -75,13 +76,9 @@ namespace Desafio1
 
         }
 
-        private void DrawString(object sender, PaintEventArgs en)
+        private void DrawString()
         {
-            en.Graphics.Clear(this.BackColor);
-            en.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            en.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            area = en.Graphics;
+            area = this.CreateGraphics();
             string drawString = Paciente;
             System.Drawing.Font drawFont = new System.Drawing.Font("Consolas", 10);
             System.Drawing.SolidBrush drawBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);

@@ -43,13 +43,14 @@
             btnPromedio = new Button();
             btnEliminar = new Button();
             btnRegistrar = new Button();
-            panel3 = new Panel();
+            label5 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.ActiveBorder;
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -68,23 +69,23 @@
             label4.AutoSize = true;
             label4.Location = new Point(77, 254);
             label4.Name = "label4";
-            label4.Size = new Size(57, 20);
+            label4.Size = new Size(116, 20);
             label4.TabIndex = 7;
-            label4.Text = "Presion";
+            label4.Text = "Nivel de Presion";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(77, 194);
             label3.Name = "label3";
-            label3.Size = new Size(55, 20);
+            label3.Size = new Size(110, 20);
             label3.TabIndex = 6;
-            label3.Text = "Sangre";
+            label3.Text = "Tipo de Sangre";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(77, 129);
+            label2.Location = new Point(107, 129);
             label2.Name = "label2";
             label2.Size = new Size(57, 20);
             label2.TabIndex = 5;
@@ -93,7 +94,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(64, 40);
+            label1.Location = new Point(64, 21);
             label1.Name = "label1";
             label1.Size = new Size(154, 20);
             label1.TabIndex = 4;
@@ -136,6 +137,7 @@
             // 
             // panel2
             // 
+            panel2.BackColor = SystemColors.ActiveBorder;
             panel2.Controls.Add(button5);
             panel2.Controls.Add(btnBuscar);
             panel2.Controls.Add(btnPromedio);
@@ -148,76 +150,84 @@
             // 
             // button5
             // 
+            button5.BackColor = Color.LightCoral;
             button5.Location = new Point(107, 141);
             button5.Name = "button5";
             button5.Size = new Size(94, 29);
             button5.TabIndex = 4;
             button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             // 
             // btnBuscar
             // 
+            btnBuscar.BackColor = Color.Coral;
             btnBuscar.Location = new Point(179, 85);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(94, 29);
             btnBuscar.TabIndex = 3;
             btnBuscar.Text = "button4";
-            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
             // btnPromedio
             // 
+            btnPromedio.BackColor = Color.Coral;
             btnPromedio.Location = new Point(179, 34);
             btnPromedio.Name = "btnPromedio";
             btnPromedio.Size = new Size(94, 29);
             btnPromedio.TabIndex = 2;
             btnPromedio.Text = "button3";
-            btnPromedio.UseVisualStyleBackColor = true;
+            btnPromedio.UseVisualStyleBackColor = false;
             btnPromedio.Click += btnPromedio_Click;
             // 
             // btnEliminar
             // 
+            btnEliminar.BackColor = Color.Coral;
             btnEliminar.Location = new Point(33, 85);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(94, 29);
             btnEliminar.TabIndex = 1;
             btnEliminar.Text = "button2";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
             // 
             // btnRegistrar
             // 
+            btnRegistrar.BackColor = Color.Coral;
             btnRegistrar.Location = new Point(33, 34);
             btnRegistrar.Name = "btnRegistrar";
             btnRegistrar.Size = new Size(94, 29);
             btnRegistrar.TabIndex = 0;
             btnRegistrar.Text = "button1";
-            btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.UseVisualStyleBackColor = false;
             btnRegistrar.Click += btnRegistrar_Click;
             // 
-            // panel3
+            // label5
             // 
-            panel3.Location = new Point(21, 16);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(960, 532);
-            panel3.TabIndex = 3;
-            panel3.Paint += DrawString;
+            label5.AutoSize = true;
+            label5.BackColor = SystemColors.ActiveBorder;
+            label5.Location = new Point(994, 3);
+            label5.Name = "label5";
+            label5.Size = new Size(138, 20);
+            label5.TabIndex = 8;
+            label5.Text = "Datos del  paciente";
             // 
             // Principal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Info;
+            BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(1299, 560);
+            Controls.Add(label5);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(panel3);
             Name = "Principal";
             Text = "Principal";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -236,6 +246,6 @@
         private Label label3;
         private Label label2;
         private Label label4;
-        private Panel panel3;
+        private Label label5;
     }
 }
