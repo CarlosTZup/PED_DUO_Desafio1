@@ -151,21 +151,22 @@
             // button5
             // 
             button5.BackColor = Color.LightCoral;
-            button5.Location = new Point(107, 141);
+            button5.Location = new Point(91, 141);
             button5.Name = "button5";
-            button5.Size = new Size(94, 29);
+            button5.Size = new Size(121, 29);
             button5.TabIndex = 4;
-            button5.Text = "button5";
+            button5.Text = "Salir";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // btnBuscar
             // 
             btnBuscar.BackColor = Color.Coral;
             btnBuscar.Location = new Point(179, 85);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(94, 29);
+            btnBuscar.Size = new Size(108, 29);
             btnBuscar.TabIndex = 3;
-            btnBuscar.Text = "button4";
+            btnBuscar.Text = "Resaltar";
             btnBuscar.UseVisualStyleBackColor = false;
             btnBuscar.Click += btnBuscar_Click;
             // 
@@ -174,31 +175,31 @@
             btnPromedio.BackColor = Color.Coral;
             btnPromedio.Location = new Point(179, 34);
             btnPromedio.Name = "btnPromedio";
-            btnPromedio.Size = new Size(94, 29);
+            btnPromedio.Size = new Size(108, 29);
             btnPromedio.TabIndex = 2;
-            btnPromedio.Text = "button3";
+            btnPromedio.Text = "Promedio";
             btnPromedio.UseVisualStyleBackColor = false;
             btnPromedio.Click += btnPromedio_Click;
             // 
             // btnEliminar
             // 
             btnEliminar.BackColor = Color.Coral;
-            btnEliminar.Location = new Point(33, 85);
+            btnEliminar.Location = new Point(22, 85);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(94, 29);
+            btnEliminar.Size = new Size(105, 29);
             btnEliminar.TabIndex = 1;
-            btnEliminar.Text = "button2";
+            btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
             // 
             // btnRegistrar
             // 
             btnRegistrar.BackColor = Color.Coral;
-            btnRegistrar.Location = new Point(33, 34);
+            btnRegistrar.Location = new Point(22, 34);
             btnRegistrar.Name = "btnRegistrar";
-            btnRegistrar.Size = new Size(94, 29);
+            btnRegistrar.Size = new Size(105, 29);
             btnRegistrar.TabIndex = 0;
-            btnRegistrar.Text = "button1";
+            btnRegistrar.Text = "Registrar";
             btnRegistrar.UseVisualStyleBackColor = false;
             btnRegistrar.Click += btnRegistrar_Click;
             // 

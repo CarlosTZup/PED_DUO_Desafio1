@@ -20,15 +20,17 @@ namespace Desafio1
 
             else
             {
+                if (!arbol.Checkpaciente(txtPaciente.Text, txtGenero.Text, txtSangre.Text, txtPresion.Text))
+                {
+                    MessageBox.Show("¡Registrado con exito!");
+                    //limpiar();
 
-                MessageBox.Show("¡Registrado con exito!");
-                //limpiar();
+                    AVLNodo r;
 
-                AVLNodo r;
-
-                r = arbol.MostrarArbol(txtPaciente.Text, txtSangre.Text, txtGenero.Text, txtPresion.Text);
-                arbol.TransversaPreO(r);
-
+                    r = arbol.MostrarArbol(txtPaciente.Text, txtGenero.Text, txtSangre.Text, txtPresion.Text);
+                    arbol.TransversaPreO(r);
+                }
+                else { MessageBox.Show("¡Paciente ya esta en el sistema!"); }
             }
             DrawString();
         }
@@ -36,6 +38,23 @@ namespace Desafio1
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             area.Clear(this.BackColor);
+            if (txtPaciente.Text == " " || txtGenero.Text == "" || txtSangre.Text == "" || txtPresion.Text == "")
+            {
+                MessageBox.Show("¡Debe completar todos los datos!");
+            }
+
+            else
+            {
+                if (arbol.Clears(txtPaciente.Text, txtGenero.Text, txtSangre.Text, txtPresion.Text))
+                {
+                    MessageBox.Show("Paciente eliminado!");
+                    
+                }
+                else
+                    MessageBox.Show("Paciente NO encontrado");
+
+            }
+
             limpiar();
         }
 
@@ -53,7 +72,9 @@ namespace Desafio1
 
         private void btnPromedio_Click(object sender, EventArgs e)
         {
-
+            string text = "";
+            text = arbol.Promediar();
+            MessageBox.Show(text);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -67,6 +88,14 @@ namespace Desafio1
             {
 
                 MessageBox.Show("Buscando el paciente...");
+                if (arbol.Checkpaciente(txtPaciente.Text, txtGenero.Text, txtSangre.Text, txtPresion.Text))
+                {
+                    arbol.MostrarArbol(txtPaciente.Text, txtGenero.Text, txtSangre.Text, txtPresion.Text);
+                    MessageBox.Show("Paciente encontrado!");
+                    DrawString();
+                }
+                else
+                    MessageBox.Show("Paciente NO encontrado");
 
             }
         }
@@ -78,7 +107,9 @@ namespace Desafio1
 
         private void DrawString()
         {
+
             area = this.CreateGraphics();
+            area.Clear(this.BackColor);
             string drawString = Paciente;
             System.Drawing.Font drawFont = new System.Drawing.Font("Consolas", 10);
             System.Drawing.SolidBrush drawBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
@@ -170,6 +201,11 @@ namespace Desafio1
             else if (txtPresion.Text == "Media")
             { area.DrawString(Paciente, drawFont, drawBrush, 750, y3, drawFormat); area.DrawLine(Pens.Black, 750, y3, 750, 325); }
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

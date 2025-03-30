@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,8 @@ namespace Desafio1
         private const int DistanciaH = 400;
         private const int DistanciaV = 400;
 
-
-
+        public string[,] Records = new string[100,4];
+        public int RLength;
 
         public Pacientes()
         {
@@ -120,27 +121,35 @@ namespace Desafio1
 
         }
 
-        public AVLNodo MostrarArbol(string gen, string tip, string pre, string nom)
+        public AVLNodo MostrarArbol(string nombre, string genero, string sangre, string presion)
         {
 
 
             Pacientes arbol = new Pacientes();
             AVLNodo raiz = arbol.Insertar("Paciente", null);
-
+            int size = 0;
             Principal mostrar = new Principal();
+            if (RLength != null)
+                size = RLength;
+             else RLength = 0;
 
             AVLNodo n = arbol.Insertar("Genero", raiz);
-            arbol.Insertar(gen, n);
-            arbol.Insertar(nom, n);
+            arbol.Insertar(genero, n);
+            arbol.Insertar(nombre, n);
 
             n = arbol.Insertar("T. Sangre", raiz);
-            arbol.Insertar(tip, n);
-            arbol.Insertar(nom, n);
-
+            arbol.Insertar(sangre, n);
+            arbol.Insertar(nombre, n);
+            
             n = arbol.Insertar("Presion", raiz);
-            arbol.Insertar(pre, n);
-            arbol.Insertar(nom, n);
+            arbol.Insertar(presion, n);
+            arbol.Insertar(nombre, n);
 
+            Records[size,3] = presion;
+            Records[size,0] = nombre;
+            Records[size,1] = genero;
+            Records[size,2] = sangre;
+            RLength++;
             return raiz;
 
         }
@@ -174,6 +183,156 @@ namespace Desafio1
                     return encontrado;
             }
             return encontrado;
+        }
+
+        public string Promediar()
+        {
+            string text= "";
+            double Sangre_A = 0, Sangre_B = 0, Sangre_AB = 0, Sangre_O = 0, Total = 0;
+            double PSangre_A, PSangre_B, PSangre_AB, PSangre_O;
+            if (RLength > 0)
+            {
+                
+                for (int i = 0; RLength != i; i++)
+                {
+                    switch (Records[i,2]) {
+
+                        case "A":
+                            Sangre_A ++;
+                            Total++;
+                            break;
+
+                        case "B":
+                            Sangre_B++;
+                            Total++;
+                            break;
+
+                        case "AB":
+                            Sangre_AB++;
+                            Total++;
+                            break;
+
+                        case "O":
+                            Sangre_O++;
+                            Total++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                text = "En la poblacion de El salvador hay: "+ Total+" Personas Registradas. De las cuales los tipos de sangre que hay son: \n";
+
+                if (Sangre_A > 0)
+                {
+                    PSangre_A = (Sangre_A / Total)*100;
+                    text += "\n Sangre Tipo A: " + PSangre_A+"%";
+
+                }
+                if (Sangre_B > 0)
+                {
+                    PSangre_B = (Sangre_B / Total)*100;
+                    text += "\n Sangre Tipo B: " + PSangre_B + "%";
+
+                }
+                if (Sangre_AB > 0)
+                {
+                    PSangre_AB = (Sangre_AB / Total)*100;
+                    text += "\n Sangre Tipo AB: " + PSangre_AB + "%";
+
+                }
+                if (Sangre_O > 0)
+                {
+                    PSangre_O = (Sangre_O / Total) * 100;
+                    text += "\n Sangre Tipo O: " + PSangre_O + "%";
+
+                }
+
+
+
+            }
+            else
+            {
+                text = "No hay valores registrados";
+            }
+            return text;
+        }
+
+        public bool Checkpaciente(string nombre, string genero, string sangre, string presion)
+        {
+            bool val = false;
+            for (int i = 0; RLength != i; i++)
+            {
+                if (Records[i, 0]== nombre )
+                {
+                    if (Records[i, 1] == genero)
+                    {
+                        if (Records[i, 2] == sangre)
+                        {
+
+                            if (Records[i, 3] == presion)
+                            {
+                                val = true;
+                                return val;
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+            return val;
+        }
+
+        public bool Clears(string nombre, string genero, string sangre, string presion)
+        {
+            bool val = false;
+            int shift = 0;
+            for (int i = 0; RLength != i; i++)
+            {
+                if (Records[i, 0] == nombre)
+                {
+                    if (Records[i, 1] == genero)
+                    {
+                        if (Records[i, 2] == sangre)
+                        {
+
+                            if (Records[i, 3] == presion)
+                            {
+                                val = true;
+                                
+                                shift ++;
+                            }
+                        }
+
+                    }
+
+                }
+                if (val)
+                {
+                    if (i == 0)
+                    {
+                        Records[i, 0] = null;
+                        Records[i, 1] = null;
+                        Records[i, 2] = null;
+                        Records[i, 3] = null;
+                    }
+                    else
+                    {
+                        Records[i - shift, 0] = Records[i, 0];
+                        Records[i - shift, 1] = Records[i, 1];
+                        Records[i - shift, 2] = Records[i, 2];
+                        Records[i - shift, 3] = Records[i, 3];
+                        Records[i, 0] = null;
+                        Records[i, 1] = null;
+                        Records[i, 2] = null;
+                        Records[i, 3] = null;
+                    }
+                }
+            }
+            RLength -= shift;
+            return val;
         }
     }
 
